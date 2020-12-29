@@ -1,6 +1,5 @@
 import refs from '../js/refs.js';
 const basicLightbox = require('basiclightbox');
-
 const {
   galleryListRef,
   modalContainer,
@@ -9,22 +8,26 @@ const {
   overlay,
 } = refs;
 
-// Adding event listeners
+// Creating modal instance
+const galleryModal = basicLightbox.create(modalImageElement);
+
+// Adding event listeners to the gallery list, modal close button, and overlay
 galleryListRef.addEventListener('click', openModal);
 modalCloseBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
 // Functions
-// Function that is invoked when the modal is open
+// Function that is invoken when the modal is open
 function openModal(event) {
-  event.preventDefault();
-
   if (event.target.nodeName !== 'IMG') {
     return;
   }
 
   const originalImageSource = event.target.dataset.source;
   modalImageElement.setAttribute('src', originalImageSource);
+
+  galleryModal.show();
+
   modalContainer.classList.add('is-open');
 
   window.addEventListener('keydown', onPressEscape);
@@ -32,8 +35,14 @@ function openModal(event) {
 
 // Function that is invoked when the modal is closed
 function closeModal() {
+  if (event.target.nodeName === 'IMG') {
+    return;
+  }
+
   modalImageElement.setAttribute('src', '');
   modalContainer.classList.remove('is-open');
+
+  galleryModal.close();
 
   // Deleting event listeners from window
   window.removeEventListener('keydown', onPressEscape);
