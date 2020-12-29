@@ -1,3 +1,4 @@
+// Functions handling markup
 function markupRender(markup, place) {
   place.insertAdjacentHTML('beforeend', markup);
 }

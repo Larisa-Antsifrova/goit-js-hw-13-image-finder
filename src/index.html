@@ -12,15 +12,22 @@
   </head>
 
   <body>
-    <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="query"
-        autocomplete="off"
-        placeholder="Search images..."
-      />
-    </form>
+    <!-- Search container -->
+    <header class="search-bar">
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="query"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+      </form>
+    </header>
+
+    <!-- Gallery container where all the gallery items will be rendered -->
     <ul class="gallery"></ul>
+
+    <!-- Load more button -->
     <button type="button" class="load-more-button" data-action="load-more">
       <span class="button-label">Load more</span>
     </button>

@@ -1,6 +1,7 @@
 const apiKey = '19692208-b21bb8a95ceb217f14156bc9c';
 const BASE_URL = 'https://pixabay.com/api/';
 
+// Methods to handle search queries
 export default {
   searchQuery: '',
   pageNumber: 1,
