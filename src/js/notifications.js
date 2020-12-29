@@ -17,6 +17,7 @@ const bottomRightStack = {
 export default function showError(errorMessage) {
   PNotify.error({
     text: errorMessage,
+    title: 'Oops!',
     delay: 4000,
     stack: bottomRightStack,
   });

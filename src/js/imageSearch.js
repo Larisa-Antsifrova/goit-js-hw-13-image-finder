@@ -40,7 +40,10 @@ function showSearchResult() {
       loadMoreBtnApi.show();
       loadMoreBtnApi.enable();
     })
-    .catch(er => showError(er));
+    .catch(er => {
+      loadMoreBtnApi.hide();
+      showError(er);
+    });
 }
 
 // Funtion that handles search form submit
