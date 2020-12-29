@@ -6,7 +6,6 @@ import markupApi from './markup.js';
 import loadMoreBtnApi from './loadMoreBtn.js';
 import showError from './notifications.js';
 
-console.log(showError);
 // Destructuring
 const { galleryListRef, searchFormRef, loadMoreBtnRef } = refs;
 const { markupRender, clearGallery } = markupApi;
