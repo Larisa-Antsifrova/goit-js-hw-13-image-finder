@@ -36,8 +36,12 @@ function showSearchResult() {
           behavior: 'smooth',
         });
       }
-      loadMoreBtnApi.show();
-      loadMoreBtnApi.enable();
+      if (pixabayApi.isLastPage) {
+        loadMoreBtnApi.hide();
+      } else {
+        loadMoreBtnApi.show();
+        loadMoreBtnApi.enable();
+      }
     })
     .catch(er => {
       loadMoreBtnApi.hide();
