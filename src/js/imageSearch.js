@@ -4,10 +4,13 @@ import galleryCardTpl from '../templates/galleryItem.hbs';
 import pixabayApi from './apiService.js';
 import markupApi from './markup.js';
 import loadMoreBtnApi from './loadMoreBtn.js';
+import showError from './notifications.js';
 
+console.log(showError);
 // Destructuring
 const { galleryListRef, searchFormRef, loadMoreBtnRef } = refs;
 const { markupRender, clearGallery } = markupApi;
+const errorMessage = 'No matches were found! Check your spelling :)';
 
 // Hiding the Load more button untill a user gets the first batch of images
 loadMoreBtnApi.hide();
@@ -36,7 +39,8 @@ function showSearchResult() {
       }
       loadMoreBtnApi.show();
       loadMoreBtnApi.enable();
-    });
+    })
+    .catch(er => showError(er));
 }
 
 // Funtion that handles search form submit

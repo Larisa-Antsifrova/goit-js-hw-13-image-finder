@@ -1,5 +1,8 @@
+import showError from './notifications.js';
+
 const apiKey = '19692208-b21bb8a95ceb217f14156bc9c';
 const BASE_URL = 'https://pixabay.com/api/';
+const errorMessage = 'No matches were found! Try again :)';
 
 // Methods to handle search queries
 export default {
@@ -11,6 +14,9 @@ export default {
     return fetch(url)
       .then(response => response.json())
       .then(({ hits }) => {
+        if (!hits.length) {
+          return Promise.reject(errorMessage);
+        }
         this.incrementPage();
         return hits;
       });
